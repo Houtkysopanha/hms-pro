@@ -25,6 +25,10 @@
 
       <!-- Profile Section -->
       <div class="profile flex items-center">
+        <div class="relative mr-2 border-r-2 border-white pl-4">
+            <i class="fa-solid fa-bell text-2xl text-white mr-4 cursor-pointer"></i>
+            <span class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">3</span>
+          </div>
         <div class="relative group">
           <img
             src="../assets/profile.jpg"
@@ -47,6 +51,11 @@
               </li>
             </ul>
           </div>
+          
+        </div>
+        <div class="name text-white ml-2">
+          <p class=" font-bold">Demo Test</p>
+          <p class=" text-sm">Admin</p>
         </div>
       </div>
     </div>

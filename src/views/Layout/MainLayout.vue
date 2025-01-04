@@ -3,9 +3,11 @@
       <HeaderBar />
       <div class="main">
         <AsideBar :isCollapsed="isAsideCollapsed" @toggle="toggleAside" />
-        <div :class="['content', { collapsed: isAsideCollapsed }]">
+        <main>
+          <div :class="['content', { collapsed: isAsideCollapsed }]">
           <router-view />
         </div>
+        </main>
       </div>
     </div>
   </template>
@@ -42,10 +44,9 @@
     /* background-color: #f8f9fa; */
     overflow: auto;
   }
-  
   .content {
-    margin-top: 60px; /* Matches HeaderBar height */
-    margin-left: 250px; /* Matches AsideBar width */
+    margin-top: 60px; 
+    margin-left: 250px; 
     padding: 10px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -54,6 +55,7 @@
   }
   
   .content.collapsed {
-    margin-left: 70px;
-  }
+    margin-left: 100px;
+}
+
   </style>
