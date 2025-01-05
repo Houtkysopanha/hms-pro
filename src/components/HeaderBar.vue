@@ -3,6 +3,9 @@
     <div class="header w-full flex items-center justify-between px-6 py-3">
       <!-- Logo Section -->
       <div class="logo flex items-center gap-4">
+        <button @click="$emit('toggle-aside')" class="hamburger md:hidden">
+          <i class="fa-solid fa-bars text-2xl text-white"></i>
+        </button>
         <img
           src="../assets/logo1.png"
           alt="Logo"
@@ -15,7 +18,7 @@
       </div>
 
       <!-- Search Section -->
-      <div class="search flex-grow max-w-lg mx-6">
+      <div class="search flex-grow max-w-lg mx-6 hidden md:block">
         <input
           type="text"
           placeholder="Search for patients, records..."
@@ -25,7 +28,7 @@
 
       <!-- Profile Section -->
       <div class="profile flex items-center">
-        <div class="relative mr-2 border-r-2 border-white pl-4">
+        <div class="relative mr-2  pl-4">
             <i class="fa-solid fa-bell text-2xl text-white mr-4 cursor-pointer"></i>
             <span class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">3</span>
           </div>
@@ -69,5 +72,34 @@ export default {
 </script>
 
 <style scoped>
-/* Additional styles (if needed) can go here. */
+.header-bar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.header {
+  width: 100%;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .search {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
 </style>

@@ -1,63 +1,76 @@
 <template>
-    <aside :class="{ collapsed: isCollapsed }" class="aside-bar">
-      <div class="wrapper">
-        <!-- Sidebar -->
-        <div
-          class="asidebar flex flex-col text-white transition-all duration-300"
-          :class="{ 'w-60': toggleCollapse, 'w-16': !toggleCollapse }"
-        >
-          <!-- Hamburger Button -->
-          <div class="header-bar ">
-            <div class="logo text-center">
-              <div class="logo-inner text-4xl mt-16 border-dashed border-b-2 border-light-blue-500">
-                <button @click="toggleCollapse" class="hamburger">
-                  <p :class="{'text-3xl': isSidebarExpanded, 'transition-all duration-300': !isSidebarExpanded}" class="font-bold ">HMS</p>
-                </button>
-              </div>
+  <aside :class="['aside-bar', { collapsed: isCollapsed, hidden: isMobileHidden, 'modal-popup': isMobile }]">
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div
+        class="asidebar flex flex-col text-white transition-all duration-300"
+        :class="{ 'w-60': isSidebarExpanded, 'w-16': !isSidebarExpanded }"
+      >
+        <!-- Hamburger Button -->
+        <div class="header-bar">
+          <div class="logo text-center">
+            <div class="logo-inner text-4xl mt-16 border-dashed border-b-2 border-light-blue-500">
+              <button @click="toggleCollapse" class="hamburger">
+                <p :class="{'text-3xl': isSidebarExpanded, 'transition-all duration-300': !isSidebarExpanded}" class="font-bold">HMS</p>
+              </button>
             </div>
           </div>
-          <div class="status text-center mt-2 border-dashed border-b-2 border-light-blue-500"
-            :class="{ 'hidden': !isSidebarExpanded, 'block': isSidebarExpanded }">
-            <div class="profile text-center">
-              <img style="margin: auto" class="w-20 h-20 rounded-full border" src="../assets//profile.jpg" alt="">
-            </div>
-            <div class="inofor mt-2 mb-3">
-              <p>Demo Test</p>
-              <i class="fa-solid fa-caret-up" style="color: lightgreen; font-size: 15px;"> <span class="font-sans"> Admin</span> </i>
-            </div>
+        </div>
+        <div class="status text-center mt-2 border-dashed border-b-2 border-light-blue-500"
+          :class="{ 'hidden': !isSidebarExpanded, 'block': isSidebarExpanded }">
+          <div class="profile text-center">
+            <img style="margin: auto" class="w-20 h-20 rounded-full border" src="../assets/profile.jpg" alt="">
           </div>
-  
-          <!-- Sidebar Items -->
-          <div class="sidebar-list overflow-y-auto flex-1">
-            <ul class="flex-1 mt-5 space-y-3">
-              <li
-                v-for="(item, index) in menuItems"
-                :key="index"
-                class="group"
+          <div class="inofor mt-2 mb-3">
+            <p>Demo Test</p>
+            <i class="fa-solid fa-caret-up" style="color: lightgreen; font-size: 15px;"> <span class="font-sans"> Admin</span> </i>
+          </div>
+        </div>
+
+        <!-- Sidebar Items -->
+        <div class="sidebar-list overflow-y-auto flex-1">
+          <ul class="flex-1 mt-5 space-y-3">
+            <li
+              v-for="(item, index) in menuItems"
+              :key="index"
+              class="group"
+            >
+              <!-- Main Item -->
+              <div
+                class="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800 transition-all cursor-pointer"
+                @click="toggleDropdown(index)"
               >
-                <!-- Main Item -->
-                <div
-                  class="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800 transition-all cursor-pointer"
-                  @click="toggleDropdown(index)"
-                >
+                <template v-if="item.path">
                   <router-link :to="item.path" class="flex items-center">
                     <i :class="item.icon" class="w-6 h-6 text-xl ml-3"></i>
                     <span
-                      class="whitespace-nowrap transition-all duration-300 ml-10"
+                      class="whitespace-nowrap transition-all duration-300 ml-5"
                       :class="{ hidden: !isSidebarExpanded, block: isSidebarExpanded }"
                     >
                       {{ item.text }}
                     </span>
                   </router-link>
-                  <!-- Dropdown Indicator -->
-                  <i
-                    v-if="item.children"
-                    style="margin: 0;"
-                    class="fa-solid fa-chevron-down"
-                    :class="{ hidden: !isSidebarExpanded }"
-                  ></i>
-                </div>
-                <!-- Dropdown Items -->
+                </template>
+                <template v-else>
+                  <div class="flex items-center">
+                    <i :class="item.icon" class="w-6 h-6 text-xl ml-3"></i>
+                    <span
+                      class="whitespace-nowrap transition-all duration-300 ml-5"
+                      :class="{ hidden: !isSidebarExpanded, block: isSidebarExpanded }"
+                    >
+                      {{ item.text }}
+                    </span>
+                  </div>
+                </template>
+                <!-- Dropdown Indicator -->
+                <i
+                  v-if="item.children"
+                  style="margin: 0;"
+                  class="fa-solid fa-chevron-down"
+                  :class="{ hidden: !isSidebarExpanded }"
+                ></i>
+              </div>
+              <!-- Dropdown Items -->
               <ul v-if="item.children && dropdownOpen === index" class="ml-10">
                 <li
                   v-for="(child, childIndex) in item.children"
@@ -75,33 +88,33 @@
                   </router-link>
                 </li>
               </ul>
-              </li>
-            </ul>
-          </div>
-  
-          <!-- Footer -->
-          <div class="footer-bar">
-            <div class="flex items-center justify-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-6 h-6"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm0 12c-2.67 0-5.33-1.34-6.4-3.46.03-.68.68-1.24 1.39-1.24.6 0 1.1.37 1.31.91 1.16 2.08 4.06 2.09 5.22 0 .21-.54.71-.91 1.31-.91.71 0 1.36.56 1.39 1.24C17.33 16.66 14.67 18 12 18z"
-                ></path>
-              </svg>
-            </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-bar">
+          <div class="flex items-center justify-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm0 12c-2.67 0-5.33-1.34-6.4-3.46.03-.68.68-1.24 1.39-1.24.6 0 1.1.37 1.31.91 1.16 2.08 4.06 2.09 5.22 0 .21-.54.71-.91 1.31-.91.71 0 1.36.56 1.39 1.24C17.33 16.66 14.67 18 12 18z"
+              ></path>
+            </svg>
           </div>
         </div>
       </div>
-    </aside>
-  </template>
+    </div>
+  </aside>
+</template>
   
   <script>
   export default {
-    props: ['isCollapsed'],
+    props: ['isCollapsed', 'isMobileHidden', 'isMobile'],
     data() {
     return {
       isSidebarExpanded: true, // Default expanded state
@@ -348,6 +361,33 @@ li {
   color: white;
   font-size: 24px;
   cursor: pointer;
+}
+.modal-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .aside-bar {
+    width: 100%;
+    height: auto;
+    position: fixed;
+    transform: translateX(-100%);
+  }
+  .aside-bar.collapsed {
+    width: 100%;
+  }
+  .aside-bar.hidden {
+    transform: translateX(-100%);
+  }
 }
   </style>
   
