@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <div class="header flex justify-end">
+        <div class="mt-5">
+          <div class="header flex justify-end">
             <p>HospitalDepartment</p>
             <p class="mx-2">/</p>
             <p>Dashboard</p>
@@ -47,7 +47,7 @@
             <button class="w-40 ml-3 p-3 rounded-lg text-white text-2xl font-medium shadow-md hover:bg-yellow-200 hover:text-black bg-yellow-300">Cancel</button>
         </div>
         </div>
-    </div>
+        </div>
 </template>
 <script>
 import QuillEditor from './QuillEditor.vue'
@@ -58,7 +58,4 @@ export default {
 
 </script>
 <style scoped>
-.container{
-    padding: 25px;
-}
 </style>

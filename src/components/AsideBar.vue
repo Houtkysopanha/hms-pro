@@ -9,7 +9,7 @@
         <!-- Hamburger Button -->
         <div class="header-bar">
           <div class="logo text-center">
-            <div class="logo-inner text-4xl mt-16 border-dashed border-b-2 border-light-blue-500">
+            <div class="logo-inner text-5xl mt-16 border-dashed border-b-2 border-light-blue-500">
               <button @click="toggleCollapse" class="hamburger">
                 <p :class="{'text-3xl': isSidebarExpanded, 'transition-all duration-300': !isSidebarExpanded}" class="font-bold">HMS</p>
               </button>
@@ -258,7 +258,7 @@
 .asidebar {
   width: auto;
   height: 100vh;
-  background-color: #334155;
+  background-color: #0044FF0F;
 }
 
 /* Styling for expanded/collapsed sidebar */
