@@ -18,9 +18,11 @@
      </div>
       <div class="content-page">
         <div class="button-add flex justify-start items-center mt-5">
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <router-link to="/add-department">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             + Add Hospital Department
           </button>
+          </router-link>
         </div>
         <div class="table-data mt-5 p-3 bg-white rounded-lg shadow-lg ">
           <div class="header-table flex justify-between items-center border-b-2 border-dashed border-gray-300">
@@ -37,13 +39,16 @@
               <p>in 1 <span>of 100</span></p>
             </div>
           </div>
-          <div class="search-table relative mt-5">
+          <div class="search-table flex relative mt-5">
         <input
           type="text"
           placeholder="Search for departments..."
           class=" w-80 p-3 pl-10 rounded-lg border border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-gray-300"
         />
         <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+        <div class="button">
+          <button class=" ml-2 p-3 text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-lg border-2"> Sort<i class="fa-solid fa-arrow-up-short-wide"></i></button>
+        </div>
       </div>
           
             <table class="min-w-full bg-white border border-gray-200 mt-5 rounded-lg overflow-hidden ">
@@ -52,7 +57,7 @@
                 <th class="py-3 px-4 border-b text-center justify-center">
                   <div class="flex items-center">
                     ID
-                    <i class="fa-solid fa-sort ml-2 cursor-pointer"></i>
+                    <!-- <i class="fa-solid fa-sort ml-2 cursor-pointer"></i> -->
                   </div>
                 </th>
                 <th class="py-3 px-4 border-b text-center">

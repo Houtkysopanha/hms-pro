@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import MainLayout from '@/views/Layout/MainLayout.vue';
 import DashBaord from '@/views/DashBaord.vue';
 import HospitalDepatment from '@/views/HospiDepart/HospitalDepatment.vue';
+import AddDepartment from '@/views/HospiDepart/AddDepartment.vue';
 
 const routes = [
     {
@@ -22,6 +23,11 @@ const routes = [
         path: '/hospittal-department',
         name: 'HospitalDepartment',
         component: HospitalDepatment,
+      },
+      {
+        path: '/add-department',
+        name: 'AddDepartment',
+        component: AddDepartment
       }
     ],
   },
