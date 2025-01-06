@@ -48,6 +48,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const token = sessionStorage.getItem("auth_token");
+  console.log("Navigating to:", to.name, "Token exists:", !!token);
 
   if (to.matched.some((record) => record.meta.guestOnly) && token) {
     return next({ name: "Dashboard" });
