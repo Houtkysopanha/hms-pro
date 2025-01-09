@@ -83,12 +83,17 @@
                   <span class="bg-green-200 text-green-600 px-2 py-1 rounded-full">Active</span>
                 </td>
                 <td class="py-4 px-4 border-b text-center">
-                    <button @click="editItem(department)" class="text-green-600 w-10 bg-green-200 rounded-full hover:text-green-700, hover:bg-blue-300 mr-2">
+                    <router-link to="/department-infor">
+                      <button @click="editItem(department)" class="text-green-600 w-10 bg-green-200 rounded-full hover:text-green-700, hover:bg-blue-300 mr-2">
                         <i class="fa-regular fa-eye"></i>
                   </button>
-                  <button @click="editItem(department)" class="text-blue-600 w-10 bg-blue-200 rounded-full hover:text-blue-700, hover:bg-blue-300">
+                    </router-link>
+                   
+                  <router-link to="/add-department">
+                    <button @click="editItem(department)" class="text-blue-600 w-10 bg-blue-200 rounded-full hover:text-blue-700, hover:bg-blue-300">
                     <i class="fa-regular fa-pen-to-square"></i>
                   </button>
+                  </router-link>
                   <button @click="deleteItem(department)" class="text-red-500 w-10 bg-red-200 rounded-full hover:text-red-700, hover:bg-red-100 ml-2">
                     <i class="fa-regular fa-square-minus"></i>
                 </button>

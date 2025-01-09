@@ -21,9 +21,9 @@
 
       <div class="grid mt-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="card bg-white shadow-md rounded-lg p-3" >
-          <div class="flex items-center">
-            <div class="icon mr-5  text-white p-3 w-14 rounded-full" :style="{ backgroundColor: 'rgba(255, 182, 193, 1)' }">
-              <i class="fa-solid fa-building text-3xl ml-1 items-center"></i>
+          <div class="items-center">
+            <div class="icon  text-white p-3 rounded-lg" :style="{ backgroundColor: 'rgba(255, 182, 193, 1)' }">
+              <i class="fa-solid fa-building text-3xl ml-1 items-center "></i>
             </div>
             <div class="icon-title ml-2">
               <p class="text-lg font-bold">Departement</p>
@@ -33,8 +33,8 @@
         </div>
 
         <div class="card bg-white shadow-md rounded-lg p-3" >
-          <div class="flex items-center">
-            <div class="icon mr-5  text-white p-3 rounded-full" :style="{ backgroundColor: 'rgba(54, 162, 235, 1)' }">
+          <div class=" items-center">
+            <div class="icon   text-white p-3 rounded-lg" :style="{ backgroundColor: 'rgba(54, 162, 235, 1)' }">
               <i class="fa-solid fa-user-doctor text-3xl ml-1 items-center"></i>
             </div>
             <div class="icon-title ml-2">
@@ -44,8 +44,8 @@
           </div>
         </div>
         <div class="card bg-white shadow-md rounded-lg p-3" >
-          <div class="flex items-center">
-            <div class="icon mr-5 text-white p-3  rounded-full" :style="{ backgroundColor: 'rgba(255, 206, 86, 1)' }">
+          <div class=" items-center">
+            <div class="icon  text-white p-3 rounded-lg " :style="{ backgroundColor: 'rgba(255, 206, 86, 1)' }">
               <i class="fa-solid fa-bed-pulse text-3xl ml-1 items-center"></i>
             </div>
             <div class="icon-title ml-2">
@@ -56,8 +56,8 @@
         </div>
         
         <div class="card bg-white shadow-md rounded-lg p-3" >
-          <div class="flex items-center">
-            <div class="icon mr-5  text-white p-3  rounded-full" :style="{ backgroundColor: 'rgba(255, 159, 64, 1)' }">
+          <div class=" items-center">
+            <div class="icon   text-white p-3 rounded-lg " :style="{ backgroundColor: 'rgba(255, 159, 64, 1)' }">
               <i class="fa-solid fa-hospital-user text-3xl ml-1 items-center"></i>
             </div>
             <div class="icon-title ml-2">
@@ -67,9 +67,9 @@
           </div>
         </div>
         <div class="card bg-white shadow-md rounded-lg p-3" >
-          <div class="flex items-center">
-            <div class="icon mr-5 text-white p-3  rounded-full" :style="{ backgroundColor: 'rgba(255, 206, 86, 1)' }">
-              <i class="fa-solid fa-building text-3xl ml-1 items-center"></i>
+          <div class=" items-center">
+            <div class="icon  text-white p-3  rounded-lg" :style="{ backgroundColor: 'rgba(255, 206, 86, 1)' }">
+              <i class="fa-solid fa-building text-3xl ml-1  items-center"></i>
             </div>
             <div class="icon-title ml-2">
               <p class="text-lg font-bold">
@@ -79,9 +79,9 @@
           </div>
         </div>
         <div class="card bg-white shadow-md rounded-lg p-3" >
-          <div class="flex items-center">
-            <div class="icon mr-5  text-white p-3  rounded-full" :style="{ backgroundColor: 'rgba(75, 192, 192, 1)' }">
-              <i class="fa-solid fa-building text-3xl ml-1 items-center"></i>
+          <div class=" items-center">
+            <div class="icon   text-white p-3 rounded-lg " :style="{ backgroundColor: 'rgba(75, 192, 192, 1)' }">
+              <i class="fa-solid fa-building text-3xl ml-1  rounded-lg items-center"></i>
             </div>
             <div class="icon-title ml-2">
               <p class="text-lg font-bold">
@@ -91,9 +91,9 @@
           </div>
         </div>
         <div class="card bg-white shadow-md rounded-lg p-3" >
-          <div class="flex items-center">
-            <div class="icon mr-5  text-white p-3  rounded-full" :style="{ backgroundColor: 'rgba(153, 102, 255, 1)' }">
-              <i class="fa-solid fa-file-invoice text-3xl ml-1 items-center"></i>
+          <div class=" items-center">
+            <div class="icon   text-white p-3 rounded-lg  " :style="{ backgroundColor: 'rgba(153, 102, 255, 1)' }">
+              <i class="fa-solid fa-file-invoice text-3xl ml-1 rounded-lg items-center"></i>
             </div>
             <div class="icon-title ml-2">
               <p class="text-lg font-bold">
@@ -103,8 +103,8 @@
           </div>
         </div>
         <div class="card bg-white shadow-md rounded-lg p-3" >
-          <div class="flex items-center">
-            <div class="icon mr-5  text-white p-3  rounded-full" :style="{ backgroundColor: 'rgba(255, 99, 132, 1)' }">
+          <div class=" items-center">
+            <div class="icon  text-white p-3 rounded-lg  " :style="{ backgroundColor: 'rgba(255, 99, 132, 1)' }">
               <i class="fa-solid fa-credit-card text-3xl ml-1 items-center"></i>
             </div>
             <div class="icon-title ml-2">

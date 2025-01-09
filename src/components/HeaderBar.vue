@@ -1,5 +1,5 @@
 <template>
-  <header class="header-bar fixed top-0 left-0 right-0 bg-gradient-to-r bg-slate-700 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] z-50">
+  <header class="header-bar fixed top-0 left-0 right-0 bg-gradient-to-r shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] z-50">
     <div class="header w-full flex items-center justify-between px-6 py-3">
       <!-- Logo Section -->
       <div class="logo flex items-center gap-4">
@@ -29,8 +29,10 @@
       <!-- Profile Section -->
       <div class="profile flex items-center">
         <div class="relative mr-2  pl-4">
-            <i class="fa-solid fa-bell text-2xl text-white mr-4 cursor-pointer"></i>
+            <router-link to="/notifications">
+              <i class="fa-solid fa-bell text-2xl text-white mr-4 cursor-pointer"></i>
             <span class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">3</span>
+            </router-link>
           </div>
         <div class="relative group">
           <img
@@ -79,6 +81,7 @@ export default {
   left: 0;
   right: 0;
   z-index: 1000;
+  background-color: #343a40;
 }
 
 .header {

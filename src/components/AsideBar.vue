@@ -37,39 +37,37 @@
             >
               <!-- Main Item -->
               <div
-                class="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800 transition-all cursor-pointer"
-                @click="toggleDropdown(index)"
-              >
-                <template v-if="item.path">
-                  <router-link :to="item.path" class="flex items-center">
-                    <i :class="item.icon" class="w-6 h-6 text-xl ml-3"></i>
-                    <span
-                      class="whitespace-nowrap transition-all duration-300 ml-5"
-                      :class="{ hidden: !isSidebarExpanded, block: isSidebarExpanded }"
-                    >
-                      {{ item.text }}
-                    </span>
-                  </router-link>
-                </template>
-                <template v-else>
-                  <div class="flex items-center">
-                    <i :class="item.icon" class="w-6 h-6 text-xl ml-3"></i>
-                    <span
-                      class="whitespace-nowrap transition-all duration-300 ml-5"
-                      :class="{ hidden: !isSidebarExpanded, block: isSidebarExpanded }"
-                    >
-                      {{ item.text }}
-                    </span>
-                  </div>
-                </template>
-                <!-- Dropdown Indicator -->
-                <i
-                  v-if="item.children"
-                  style="margin: 0;"
-                  class="fa-solid fa-chevron-down"
-                  :class="{ hidden: !isSidebarExpanded }"
-                ></i>
-              </div>
+  class="flex items-center space-x-2 p-2 rounded-md transition-all cursor-pointer"
+  :class="{
+    'bg-blend-lighten text-white': isActive(item.path), /* Highlight for active route */
+    'hover:bg-gray-800': true          /* Hover effect for all items */
+  }"
+>
+  <template v-if="item.path">
+    <router-link :to="item.path" class="flex items-center w-full">
+      <i :class="item.icon" class="w-6 h-6 text-xl ml-3"></i>
+      <span
+        class="whitespace-nowrap transition-all duration-300 ml-5"
+        :class="{ hidden: !isSidebarExpanded, block: isSidebarExpanded }"
+      >
+        {{ item.text }}
+      </span>
+    </router-link>
+  </template>
+  <template v-else>
+    <div class="flex items-center w-full">
+      <i :class="item.icon" class="w-6 h-6 text-xl ml-3"></i>
+      <span
+        class="whitespace-nowrap transition-all duration-300 ml-5"
+        :class="{ hidden: !isSidebarExpanded, block: isSidebarExpanded }"
+      >
+        {{ item.text }}
+      </span>
+    </div>
+  </template>
+</div>
+
+
               <!-- Dropdown Items -->
               <ul v-if="item.children && dropdownOpen === index" class="ml-10">
                 <li
@@ -121,7 +119,7 @@
       dropdownOpen: null, // Track the open dropdown
       menuItems: [
   { icon: "fa-solid fa-tachometer-alt", text: "Dashboard", path: "/dashboard" },
-  { icon: "fa-solid fa-hospital", text: "Hospital Department", path: "hospital-department" },
+  { icon: "fa-solid fa-hospital", text: "Hospital Department", path: "/hospital-department" },
   { icon: "fa-solid fa-user-md", text: "Doctor" },
   { icon: "fa-solid fa-user-injured", text: "Patient" },
   { icon: "fa-solid fa-calendar-check", text: "Doctor Schedule" },
@@ -196,11 +194,19 @@
     toggleDropdown(index) {
       this.dropdownOpen = this.dropdownOpen === index ? null : index; // Toggle dropdown
     },
+    isActive(path) {
+  if(!path) return false; //
+  return this.$route.path.startsWith(path);
+},
+
     },
   };
   </script>
   
   <style scoped>
+  .bg-blend-lighten{
+    background-color: lightblue;
+  }
   .aside-bar {
     position: fixed;
     top: 60px;
@@ -258,7 +264,7 @@
 .asidebar {
   width: auto;
   height: 100vh;
-  background-color: #0044FF0F;
+  /* background-color: #0044FF0F; */
 }
 
 /* Styling for expanded/collapsed sidebar */

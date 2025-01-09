@@ -4,6 +4,8 @@ import Dashboard from '@/views/DashBaord.vue'; // Ensure the correct import path
 import HospitalDepartment from '@/views/HospiDepart/HospitalDepatment.vue';
 import AddDepartment from '@/views/HospiDepart/AddDepartment.vue';
 import LoginPage from '@/views/LoginPage.vue/LoginPage.vue';
+import NotiFication from '@/views/NotiFication.vue';
+import DepartInfor from '@/views/HospiDepart/DepertInfor.vue';
 
 const routes = [
   {
@@ -19,20 +21,30 @@ const routes = [
     meta: { requiresAuth: true },
     children: [
       {
-        path: "dashboard",
+        path: "/dashboard",
         name: "Dashboard",
         component: Dashboard,
       },
       {
-        path: "hospital-department",
+        path: "/hospital-department",
         name: "HospitalDepartment",
         component: HospitalDepartment,
       },
       {
-        path: "add-department",
+        path: "/add-department",
         name: "AddDepartment",
         component: AddDepartment,
       },
+      {
+        path: "/notifications",
+        name: "NotiFication",
+        component: NotiFication,
+      },
+      {
+        path: "/department-infor",
+        name: "DepartmentInfor",
+        component: DepartInfor,
+      }
     ],
   },
   {

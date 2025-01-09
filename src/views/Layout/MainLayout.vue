@@ -67,10 +67,12 @@
     overflow-x: hidden;
     height: auto;
     transition: margin-left 0.3s ease;
+    background-color: lightblue;
+
   }
   
   .content.collapsed {
-    margin-left: 100px;
+    margin-left: 80px;
 }
 @media (max-width: 768px) {
   .main {
