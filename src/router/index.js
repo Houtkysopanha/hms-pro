@@ -6,6 +6,9 @@ import AddDepartment from '@/views/HospiDepart/AddDepartment.vue';
 import LoginPage from '@/views/LoginPage.vue/LoginPage.vue';
 import NotiFication from '@/views/NotiFication.vue';
 import DepartInfor from '@/views/HospiDepart/DepertInfor.vue';
+import DoctorFeature from '@/views/DocTor.vue/DoctorFeature.vue';
+import AddDoctor from '@/views/DocTor.vue/AddDoctor.vue';
+import DoctorInfor from '@/views/DocTor.vue/DoctorInfor.vue';
 
 const routes = [
   {
@@ -44,7 +47,22 @@ const routes = [
         path: "/department-infor",
         name: "DepartmentInfor",
         component: DepartInfor,
-      }
+      },
+      {
+        path: "/doctor",
+        name: "Doctor",
+        component: DoctorFeature,
+      },
+      {
+        path: "/add-doctor",
+        name: "Add Doctor",
+        component: AddDoctor,
+      },
+      {
+        path: "/doctor-infor",
+        name: 'DoctorInfor',
+        component: DoctorInfor,
+      },
     ],
   },
   {
