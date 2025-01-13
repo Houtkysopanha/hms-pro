@@ -1,12 +1,12 @@
 <template>
         <div class="mt-5">
           <div class="header flex justify-end">
-            <p>HospitalDepartment</p>
-            <p class="mx-2">/</p>
-            <p>Dashboard</p>
+            <p class="text-white">Hospital Department</p>
+            <p class="mx-2 text-white">/</p>
+            <p class="text-white">Dashboard</p>
         </div>
         <div class="form-content bg-white shadow-md rounded-lg p-3 mt-10">
-            <p class="text-2xl font-medium border-b-2 border-dashed border-gray-300 pb-4">Add Department</p>
+            <p class="text-2xl border-b-2 border-dashed border-gray-300 pb-4 font-bold">Add Department</p>
             <div class="Add-depart mt-8">
                 <label class=" text-lg font-medium" for="Department Name">Department Name <sup style="color: red;">*</sup></label>
             <div class="flex items-center border mt-1 border-gray-300 rounded-md overflow-hidden">

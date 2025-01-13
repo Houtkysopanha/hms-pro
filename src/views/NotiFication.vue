@@ -2,7 +2,7 @@
     <div class="main bg-white shadow-md rounded-lg">
       <div class="header flex justify-between items-center border-b-2 border-gray-300 pb-3">
         <div class="name">
-          <p class="text-3xl font-medium">Notifications</p>
+          <p class="text-3xl font-bold">Notifications</p>
         </div>
         <div class="btn-deleted">
           <button @click="clearAll" class="w-20 rounded-lg font-2xl font-medium text-white shadow-md hover:bg-blue-500 h-10 p-2 bg-blue-400">Clear All</button>
@@ -56,9 +56,9 @@
     data() {
       return {
         notifications: [
-          { type: 'Info', subject: 'System Update', date: '01/07/2025 07:09 AM', photo: require('../assets/profile.jpg'),descrip: 'This is additional detail information for the notification.' },
-          { type: 'Warning', subject: 'Password Expiry', date: '01/07/2025 07:09 AM', photo: require('../assets/profile.jpg'),descrip: 'This is additional detail information for the notification.' },
-          { type: 'Alert', subject: 'Unauthorized Access', date: '01/07/2025 07:09 AM', photo: require('../assets/profile.jpg'),descrip: 'This is additional detail information for the notification.' },
+          { type: 'Info', subject: 'System Update', date: '01/07/2025 07:09 AM', photo: require('../assets/profile1.png'),descrip: 'This is additional detail information for the notification.' },
+          { type: 'Warning', subject: 'Password Expiry', date: '01/07/2025 07:09 AM', photo: require('../assets/profile1.png'),descrip: 'This is additional detail information for the notification.' },
+          { type: 'Alert', subject: 'Unauthorized Access', date: '01/07/2025 07:09 AM', photo: require('../assets/profile1.png'),descrip: 'This is additional detail information for the notification.' },
           // Add more notifications as needed
         ],
         showModal: false,

@@ -1,7 +1,7 @@
 <template>
     <div class="main p-5" >
         <div class="header flex justify-between border-b-2 border-gray-200 pb-2">
-                <p class=" text-3xl">Departments Infor</p>
+                <p class=" text-3xl font-bold text-white">Departments Information</p>
                     <div class="button">
                       <router-link to="/add-department">
                         <button class=" w-20 h-10 p-2 bg-white rounded-md shadow-lg text-lg text-green-600 font-medium">Edit</button>

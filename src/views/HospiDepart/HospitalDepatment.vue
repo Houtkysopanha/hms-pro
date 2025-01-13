@@ -2,17 +2,17 @@
     <main>
     <div class="header-page flex justify-between items-center border-b-2 border-gray-200 py-2">
       <div class="title-page flex items-center">
-          <i class="fa-solid fa-hospital text-4xl mr-3"></i>
+          <i class="fa-solid fa-hospital text-4xl mr-3 text-white"></i>
         <div class="title">
-          <p class=" text-3xl">Hospital Department</p>
-          <p class=" text-sm">Hospital Department Features</p>
+          <p class=" text-3xl font-bold text-white">Hospital Department</p>
+          <p class=" text-sm font-bold text-white">Hospital Department Features</p>
         </div>
       </div>
       <div class="link-back-page">
         <div class="link flex items-center">
-        <p>DashBoard</p>
-        <p class="m-3">/</p>
-        <p>Home</p>
+        <p class="text-white">DashBoard</p>
+        <p class="m-3 text-white">/</p>
+        <p class="text-white">Home</p>
         </div>
       </div>
      </div>

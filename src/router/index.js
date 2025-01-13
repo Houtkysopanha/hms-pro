@@ -9,6 +9,7 @@ import DepartInfor from '@/views/HospiDepart/DepertInfor.vue';
 import DoctorFeature from '@/views/DocTor.vue/DoctorFeature.vue';
 import AddDoctor from '@/views/DocTor.vue/AddDoctor.vue';
 import DoctorInfor from '@/views/DocTor.vue/DoctorInfor.vue';
+import EditDoctor from '@/views/DocTor.vue/EditDoctor.vue';
 
 const routes = [
   {
@@ -62,6 +63,11 @@ const routes = [
         path: "/doctor-infor",
         name: 'DoctorInfor',
         component: DoctorInfor,
+      },
+      {
+        path: "/edit-doctor",
+        name: 'Edit Doctor',
+        component: EditDoctor,
       },
     ],
   },

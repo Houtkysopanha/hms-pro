@@ -1,8 +1,24 @@
 <template>
     <div class="main">
         <div class="content2">
-             <div class="header flex justify-between items-center border-b-2 border-gray-200 pb-2">
-               <div class="btn-add">
+          <div class="header-page flex justify-between items-center border-b-2 border-gray-200 py-2">
+      <div class="title-page flex items-center">
+          <i class="fa-solid fa-user-md text-4xl mr-3  text-white"></i>
+        <div class="title">
+          <p class=" text-3xl font-bold text-white">Doctor</p>
+          <p class=" text-sm font-bold text-white">Doctor Features</p>
+        </div>
+      </div>
+      <div class="link-back-page">
+        <div class="link flex items-center">
+        <p class="text-white">DashBoard</p>
+        <p class="m-3 text-white">/</p>
+        <p class="text-white">Home</p>
+        </div>
+      </div>
+     </div>
+
+     <div class="btn-add mt-5">
                 <router-link to="/add-doctor">
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             + Add Doctor
@@ -10,14 +26,6 @@
                 </router-link>
                </div>
         
-                <div class="link-back-page">
-        <div class="link flex items-center">
-        <p>DashBoard</p>
-        <p class="m-3">/</p>
-        <p>Doctor List</p>
-        </div>
-      </div>
-             </div>
              <div class="table-content">
                 <div class="table-data mt-5 p-3 bg-white rounded-lg shadow-lg ">
           <div class="header-table flex justify-between items-center border-b-2 border-dashed border-gray-300">
@@ -45,7 +53,7 @@
           <button class=" ml-2 p-3 text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-lg border-2"> Sort <i class="fa-solid fa-arrow-up-short-wide"></i></button>
         </div>
         <div class="bton-export">
-            <button class=" ml-2 p-3 bg-blue-500 text-white focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-lg border-2"> Export <i class="fa-solid fa-cloud-arrow-down"></i></button>
+            <button @click="exportToExcel" class=" ml-2 p-3 bg-blue-500 text-white focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-lg border-2"> Export <i class="fa-solid fa-cloud-arrow-down"></i></button>
         </div>
       </div>
           
@@ -108,7 +116,7 @@
                   </button>
                     </router-link>
                    
-                  <router-link to="/add-department">
+                  <router-link to="/edit-doctor">
                     <button @click="editItem(department)" class="text-blue-600 w-10 bg-blue-200 rounded-full hover:text-blue-700, hover:bg-blue-300">
                     <i class="fa-regular fa-pen-to-square"></i>
                   </button>
@@ -144,6 +152,7 @@
     </div>
 </template>
 <script>
+import * as XLSX from 'xlsx';
 export default {
     name: 'DoctorFeature',
     data() {
@@ -176,6 +185,12 @@ export default {
     },
   },
   methods: {
+    exportToExcel() {
+      const ws = XLSX.utils.json_to_sheet(this.departments);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'departments');
+      XLSX.writeFile(wb, 'departments.xlsx');
+    },
     viewItem(item) {
       // Handle view action
       console.log('View item:', item);

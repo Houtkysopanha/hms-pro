@@ -1,7 +1,7 @@
 <template>
     <div class="content3 mt-5">
       <div class="header border-b-2 border-gray-200 pb-2 mb-6">
-        <p class="text-3xl font-bold text-white">Add Doctor</p>
+        <p class="text-3xl  font-bold text-white">Edit</p>
       </div>
       <div class="form-field shadow-lg rounded-lg p-8 bg-white">
         <form @submit.prevent="submitForm">
@@ -242,12 +242,14 @@
         <hr class="pb-2">
          <div class="btn flex space-x-3">
             <div class="btn-save">
-                <button
+                <router-link to="/doctor">
+                    <button
             type="submit"
             class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg transition duration-300"
           >
-            +Add Doctor
+            Save
           </button>
+                </router-link>
             </div>
             <div class="cancel"> 
                 <router-link to="/doctor">
@@ -287,11 +289,35 @@
           department: '',
           status: '',
           address: '',
-          profilePicture: null
+          profilePicture: ''
         }
       };
     },
+    created() {
+    this.fetchDoctorInfo();
+  },
     methods: {
+        fetchDoctorInfo() {
+      // Fetch the doctor's information from an API or Vuex store
+      // For demonstration, we'll use hardcoded data
+      const doctorInfo = {
+        name: 'Dr Demo Test',
+        email: 'drdemotest@gmail.com',
+        password: '12345678',
+        phone: '099 1123 1234',
+        date: '1980-01-01',
+        specialist: 'General Doctor',
+        designation: 'Senior Doctor',
+        gender: 'male',
+        blood: 'O+',
+        department: 'cardiology',
+        status: 'active',
+        address: '123 Main St, City, Country',
+        profilePicture: '../../assets/profile.jpg',
+        // fileName: 'profile.jpg'
+      };
+      this.doctor = { ...doctorInfo };
+    },
       submitForm() {
         // Handle form submission
         console.log('Form submitted:', this.doctor);

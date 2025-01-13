@@ -2,7 +2,7 @@
     <div class="content4 mt-5">
         <div class="header flex justify-between border-b-2 border-gray-200 pb-2">
             <div class="name">
-                <p class=" text-3xl">Doctor Information</p>
+                <p class=" text-3xl font-bold text-white">Doctor Information</p>
             </div>
             <div class="btn-edit">
                 <button class=" bg-white w-20 h-10 text-green-500 rounded-md">

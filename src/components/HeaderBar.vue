@@ -36,7 +36,7 @@
           </div>
         <div class="relative group">
           <img
-            src="../assets/profile.jpg"
+            src="../assets/profile1.png"
             alt="Profile"
             class="w-10 h-10 rounded-full border cursor-pointer"
           />

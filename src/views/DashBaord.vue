@@ -3,17 +3,17 @@
      <!-- <div class="container"> -->
      <div class="header-page flex justify-between items-center border-b-2 border-gray-200 py-2">
       <div class="title-page flex items-center">
-          <i class="fas fa-tachometer-alt text-4xl mr-3"></i>
-        <div class="title">
-          <p class=" text-3xl">Dashboard</p>
-          <p class=" text-sm">Dashboard Features</p>
+          <i class="fas fa-tachometer-alt text-4xl mr-3 text-white"></i>
+        <div class="title text-white ">
+          <p class=" text-3xl font-bold">Dashboard</p>
+          <p class=" text-sm font-bold">Dashboard Features</p>
         </div>
       </div>
       <div class="link-back-page">
         <div class="link flex items-center">
-        <p>DashBoard</p>
-        <p class="m-3">/</p>
-        <p>Home</p>
+        <p class=" text-white">DashBoard</p>
+        <p class="m-3"></p>
+        <p></p>
         </div>
       </div>
      </div>

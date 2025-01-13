@@ -19,7 +19,7 @@
         <div class="status text-center mt-2 border-dashed border-b-2 border-light-blue-500"
           :class="{ 'hidden': !isSidebarExpanded, 'block': isSidebarExpanded }">
           <div class="profile text-center">
-            <img style="margin: auto" class="w-20 h-20 rounded-full border" src="../assets/profile.jpg" alt="">
+            <img style="margin: auto" class="w-20 h-20 rounded-full border" src="../assets/profile1.png" alt="">
           </div>
           <div class="inofor mt-2 mb-3">
             <p>Demo Test</p>
