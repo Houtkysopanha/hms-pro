@@ -10,6 +10,10 @@ import DoctorFeature from '@/views/DocTor.vue/DoctorFeature.vue';
 import AddDoctor from '@/views/DocTor.vue/AddDoctor.vue';
 import DoctorInfor from '@/views/DocTor.vue/DoctorInfor.vue';
 import EditDoctor from '@/views/DocTor.vue/EditDoctor.vue';
+import PatientFeature from '@/views/PatientPage/PatientFeature.vue';
+import AddPatient from '@/views/PatientPage/AddPatient.vue';
+import PatientInfor from '@/views/PatientPage/PatientInfor.vue';
+import EditPatient from '@/views/PatientPage/EditPatient.vue';
 
 const routes = [
   {
@@ -69,6 +73,26 @@ const routes = [
         name: 'Edit Doctor',
         component: EditDoctor,
       },
+      {
+        path: "/patient-feature",
+        name: "PatientFeature",
+        component: PatientFeature,
+      },
+      {
+        path: "/AddPatient",
+        name: "AddPatient",
+        component: AddPatient,
+      },
+      {
+        path: "/patient-info",
+       name: "PatientInfo",
+       component: PatientInfor,
+      },
+      {
+        path: "/edit-patient",
+       name: "EditPatient",
+       component: EditPatient,
+      }
     ],
   },
   {

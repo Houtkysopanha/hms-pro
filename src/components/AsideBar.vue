@@ -121,7 +121,7 @@
   { icon: "fa-solid fa-tachometer-alt", text: "Dashboard", path: "/dashboard" },
   { icon: "fa-solid fa-hospital", text: "Hospital Department", path: "/hospital-department" },
   { icon: "fa-solid fa-user-md", text: "Doctor", path: "/doctor"},
-  { icon: "fa-solid fa-user-injured", text: "Patient" },
+  { icon: "fa-solid fa-user-injured", text: "Patient", path: "/patient-feature" },
   { icon: "fa-solid fa-calendar-check", text: "Doctor Schedule" },
   { icon: "fa-solid fa-calendar-day", text: "Patient Appointment" },
   { icon: "fa-solid fa-file-medical-alt", text: "Patient Case Study" },
