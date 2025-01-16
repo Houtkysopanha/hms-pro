@@ -38,16 +38,20 @@
           <img
             src="../assets/profile1.png"
             alt="Profile"
-            class="w-10 h-10 rounded-full border cursor-pointer"
+            class="w-10 h-10 rounded-full border-2 border-gray-300 cursor-pointer"
           />
           <!-- Dropdown Menu -->
           <div
             class="absolute right-0 mt-1 w-40 hidden group-hover:block bg-white text-gray-700 rounded-lg shadow-md z-50"
           >
             <ul class="py-2 text-sm">
-              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+              <router-link to="/my-profile">
+           
+                  <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
                 <i class="fa-solid fa-id-card-clip"></i>  View Profile
               </li>
+             
+              </router-link>
               <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
                 <i class="fa-solid fa-gear"></i>  Settings
               </li>
@@ -87,7 +91,9 @@ export default {
 .header {
   width: 100%;
 }
-
+.profile-picture img{
+  border: 2px solid gainsboro;
+}
 .hamburger {
   background: none;
   border: none;

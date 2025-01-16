@@ -14,6 +14,11 @@ import PatientFeature from '@/views/PatientPage/PatientFeature.vue';
 import AddPatient from '@/views/PatientPage/AddPatient.vue';
 import PatientInfor from '@/views/PatientPage/PatientInfor.vue';
 import EditPatient from '@/views/PatientPage/EditPatient.vue';
+import DoctorSchedule from '@/views/DoctorSchedule/DoctorSchedule.vue';
+import AddSchedule from '@/views/DoctorSchedule/AddSchedule.vue';
+import ScheduleInfor from '@/views/DoctorSchedule/ScheduleInfor.vue';
+import EditSchedule from '@/views/DoctorSchedule/EditSchedule.vue';
+import MyProfile from '@/views/MyProfile.vue';
 
 const routes = [
   {
@@ -92,6 +97,31 @@ const routes = [
         path: "/edit-patient",
        name: "EditPatient",
        component: EditPatient,
+      },
+      {
+        path: "/doctor-schedule",
+        name: "DoctorSchedule",
+        component: DoctorSchedule,
+      },
+      {
+        path: "/add-schedule",
+        name: "Add Schedule",
+        component: AddSchedule,
+      },
+      {
+        path: "/schedule-infor",
+        name: "ScheduleInfor",
+        component: ScheduleInfor,
+      },
+      {
+        path: "/edit-schedule",
+        name: "Edit Schedule",
+        component: EditSchedule,
+      },
+      {
+        path: "/my-profile",
+        name: "MyProfile",
+        component: MyProfile,
       }
     ],
   },

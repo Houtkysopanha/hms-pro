@@ -1,12 +1,10 @@
 <template>
   <aside :class="['aside-bar', { collapsed: isCollapsed, hidden: isMobileHidden, 'modal-popup': isMobile }]">
     <div class="wrapper">
-      <!-- Sidebar -->
       <div
         class="asidebar flex flex-col text-white transition-all duration-300"
         :class="{ 'w-60': isSidebarExpanded, 'w-16': !isSidebarExpanded }"
       >
-        <!-- Hamburger Button -->
         <div class="header-bar">
           <div class="logo text-center">
             <div class="logo-inner text-5xl mt-16 border-dashed border-b-2 border-light-blue-500">
@@ -16,18 +14,19 @@
             </div>
           </div>
         </div>
-        <div class="status text-center mt-2 border-dashed border-b-2 border-light-blue-500"
-          :class="{ 'hidden': !isSidebarExpanded, 'block': isSidebarExpanded }">
-          <div class="profile text-center">
-            <img style="margin: auto" class="w-20 h-20 rounded-full border" src="../assets/profile1.png" alt="">
+        <div
+          class="status text-center mt-2 border-dashed border-b-2 border-light-blue-500"
+          :class="{ 'hidden': !isSidebarExpanded, 'block': isSidebarExpanded }"
+        >
+          <div class=" profile-picture profile text-center">
+            <img style="margin: auto" class="w-20 h-20 rounded-full border" src="../assets/profile1.png" alt="Profile">
           </div>
-          <div class="inofor mt-2 mb-3">
+          <div class="info mt-2 mb-3">
             <p>Demo Test</p>
             <i class="fa-solid fa-caret-up" style="color: lightgreen; font-size: 15px;"> <span class="font-sans"> Admin</span> </i>
           </div>
         </div>
 
-        <!-- Sidebar Items -->
         <div class="sidebar-list overflow-y-auto flex-1">
           <ul class="flex-1 mt-5 space-y-3">
             <li
@@ -37,43 +36,48 @@
             >
               <!-- Main Item -->
               <div
-  class="flex items-center space-x-2 p-2 rounded-md transition-all cursor-pointer"
-  :class="{
-    'bg-blend-lighten text-white': isActive(item.path), /* Highlight for active route */
-    'hover:bg-gray-800': true          /* Hover effect for all items */
-  }"
->
-  <template v-if="item.path">
-    <router-link :to="item.path" class="flex items-center w-full">
-      <i :class="item.icon" class="w-6 h-6 text-xl ml-3"></i>
-      <span
-        class="whitespace-nowrap transition-all duration-300 ml-5"
-        :class="{ hidden: !isSidebarExpanded, block: isSidebarExpanded }"
-      >
-        {{ item.text }}
-      </span>
-    </router-link>
-  </template>
-  <template v-else>
-    <div class="flex items-center w-full">
-      <i :class="item.icon" class="w-6 h-6 text-xl ml-3"></i>
-      <span
-        class="whitespace-nowrap transition-all duration-300 ml-5"
-        :class="{ hidden: !isSidebarExpanded, block: isSidebarExpanded }"
-      >
-        {{ item.text }}
-      </span>
-    </div>
-  </template>
-</div>
-
+                class="flex items-center space-x-2 p-2 rounded-md transition-all cursor-pointer"
+                :class="{
+                  'bg-blue-500 text-white': isActive(item.path), // Active main item highlight
+                  'hover:bg-gray-800': !isActive(item.path),    // Hover effect
+                }"
+                @click="item.children ? toggleDropdown(index) : null"
+              >
+                <template v-if="item.path">
+                  <router-link :to="item.path" class="flex items-center w-full">
+                    <i :class="item.icon" class="w-6 h-6 text-xl ml-3"></i>
+                    <span
+                      class="whitespace-nowrap transition-all duration-300 ml-5"
+                      :class="{ hidden: !isSidebarExpanded, block: isSidebarExpanded }"
+                    >
+                      {{ item.text }}
+                    </span>
+                  </router-link>
+                </template>
+                <template v-else>
+                  <div class="flex items-center w-full">
+                    <i :class="item.icon" class="w-6 h-6 text-xl ml-3"></i>
+                    <span
+                      class="whitespace-nowrap transition-all duration-300 ml-5"
+                      :class="{ hidden: !isSidebarExpanded, block: isSidebarExpanded }"
+                    >
+                      {{ item.text }}
+                    </span>
+                    <i v-if="item.children" class="fa-solid fa-chevron-down ml-auto"></i>
+                  </div>
+                </template>
+              </div>
 
               <!-- Dropdown Items -->
-              <ul v-if="item.children && dropdownOpen === index" class="ml-10">
+              <ul v-if="item.children && dropdownOpen === index" class="">
                 <li
                   v-for="(child, childIndex) in item.children"
                   :key="childIndex"
-                  class="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800 transition-all cursor-pointer"
+                  class="flex items-center space-x-2 p-2 rounded-md transition-all cursor-pointer"
+                  :class="{
+                    'bg-blue-500 text-white': isActive(child.path), // Active child item highlight
+                    'hover:bg-gray-800': !isActive(child.path),    // Hover effect
+                  }"
                 >
                   <router-link :to="child.path" class="flex items-center">
                     <i :class="child.icon" class="w-6 h-6 text-xl ml-3"></i>
@@ -90,7 +94,6 @@
           </ul>
         </div>
 
-        <!-- Footer -->
         <div class="footer-bar">
           <div class="flex items-center justify-center">
             <svg
@@ -109,7 +112,7 @@
     </div>
   </aside>
 </template>
-  
+
   <script>
   export default {
     props: ['isCollapsed', 'isMobileHidden', 'isMobile'],
@@ -122,7 +125,7 @@
   { icon: "fa-solid fa-hospital", text: "Hospital Department", path: "/hospital-department" },
   { icon: "fa-solid fa-user-md", text: "Doctor", path: "/doctor"},
   { icon: "fa-solid fa-user-injured", text: "Patient", path: "/patient-feature" },
-  { icon: "fa-solid fa-calendar-check", text: "Doctor Schedule" },
+  { icon: "fa-solid fa-calendar-check", text: "Doctor Schedule", path: "/doctor-schedule" },
   { icon: "fa-solid fa-calendar-day", text: "Patient Appointment" },
   { icon: "fa-solid fa-file-medical-alt", text: "Patient Case Study" },
   { icon: "fa-solid fa-prescription", text: "Prescription" },
@@ -186,26 +189,27 @@
     }
   },
   methods: {
-      toggleCollapse() {
-        this.$emit('toggle');
-        this.isSidebarExpanded = !this.isSidebarExpanded;
-      },
-      
+    toggleCollapse() {
+      this.$emit('toggle');
+      this.isSidebarExpanded = !this.isSidebarExpanded;
+    },
     toggleDropdown(index) {
-      this.dropdownOpen = this.dropdownOpen === index ? null : index; // Toggle dropdown
+      this.dropdownOpen = this.dropdownOpen === index ? null : index;
     },
     isActive(path) {
-  if(!path) return false; //
-  return this.$route.path.startsWith(path);
-},
-
+      if (!path) return false;
+      return this.$route.path === path;
     },
+  },
   };
   </script>
   
   <style scoped>
   .bg-blend-lighten{
     background-color: lightblue;
+  }
+  .profile-picture img {
+    border: 3px solid #e2e8f0;
   }
   .aside-bar {
     position: fixed;
