@@ -19,7 +19,13 @@ import AddSchedule from '@/views/DoctorSchedule/AddSchedule.vue';
 import ScheduleInfor from '@/views/DoctorSchedule/ScheduleInfor.vue';
 import EditSchedule from '@/views/DoctorSchedule/EditSchedule.vue';
 import MyProfile from '@/views/MyProfile.vue';
-
+import PatientAppointment from '@/views/PatientAppointment/patientAppointment.vue';
+import AddPatientAppointments from '@/views/PatientAppointment/AddPatientAppoint.vue';
+import ViewPatientAppointment from '@/views/PatientAppointment/ViewPatientAppointment.vue';
+import PatientCaseStudie from '@/views/PatieCaseStudie/PatientCaseStudie.vue';
+import AddPatientCaseStudie from '@/views/PatieCaseStudie/AddPatientCaseStudie.vue';
+import InforPatientCaseStudie from '@/views/PatieCaseStudie/InforPatientCaseStudie.vue';
+import EditFeatures from '@/views/PatieCaseStudie/EditFeatures.vue';
 const routes = [
   {
     path: "/login",
@@ -122,7 +128,49 @@ const routes = [
         path: "/my-profile",
         name: "MyProfile",
         component: MyProfile,
-      }
+      },
+      //PatientAppointment
+      {
+        path: "/patientappointment",
+        name: "PatientAppointment",
+        component: PatientAppointment,
+      },
+      //AddPatientAppointments
+      {
+        path: "/AddPatientAppointments",
+        name: "AddPatientAppointments",
+        component: AddPatientAppointments,
+      },
+      //PatientAppointInfor
+      {
+        path: "/PatientAppointInfor",
+        name: "PatientAppointInfor",
+        component: ViewPatientAppointment,
+      },
+      //PatientCaseStudie
+      {
+        path: "/PatientCaseStudie",
+        name: "PatientCaseStudie",
+        component: PatientCaseStudie,
+      },
+      //AddPatientCaseStudie
+      {
+        path: "/AddPatientCaseStudie",
+        name: "AddPatientCaseStudie",
+        component: AddPatientCaseStudie,
+      },
+      //InforPatientCaseStudie
+      {
+        path: "/InforPatientCaseStudie",
+        name: "InforPatientCaseStudie",
+        component: InforPatientCaseStudie,
+      },
+      //EditPatientCaseStudie
+      {
+        path: "/EditPatientCaseStudie",
+        name: "EditFeatures",
+        component: EditFeatures,
+      },
     ],
   },
   {

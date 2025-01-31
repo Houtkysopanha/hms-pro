@@ -38,7 +38,7 @@
               <div
                 class="flex items-center space-x-2 p-2 rounded-md transition-all cursor-pointer"
                 :class="{
-                  'bg-blue-500 text-white': isActive(item.path), // Active main item highlight
+                  'bg-ative text-white': isActive(item.path), // Active main item highlight
                   'hover:bg-gray-800': !isActive(item.path),    // Hover effect
                 }"
                 @click="item.children ? toggleDropdown(index) : null"
@@ -126,8 +126,8 @@
   { icon: "fa-solid fa-user-md", text: "Doctor", path: "/doctor"},
   { icon: "fa-solid fa-user-injured", text: "Patient", path: "/patient-feature" },
   { icon: "fa-solid fa-calendar-check", text: "Doctor Schedule", path: "/doctor-schedule" },
-  { icon: "fa-solid fa-calendar-day", text: "Patient Appointment" },
-  { icon: "fa-solid fa-file-medical-alt", text: "Patient Case Study" },
+  { icon: "fa-solid fa-calendar-day", text: "Patient Appointment", path: "/patientappointment" },
+  { icon: "fa-solid fa-file-medical-alt", text: "Patient Case Study", path: "/PatientCaseStudie" },
   { icon: "fa-solid fa-prescription", text: "Prescription" },
   { icon: "fa-solid fa-shield-alt", text: "Insurance" },
   {
@@ -210,6 +210,9 @@
   }
   .profile-picture img {
     border: 3px solid #e2e8f0;
+  }
+  .bg-ative{
+    background-color: lightblue;
   }
   .aside-bar {
     position: fixed;
