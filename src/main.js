@@ -7,6 +7,7 @@ import Chart from 'chart.js/auto';
 import PrimeVue from 'primevue/config';
 
 
+
 const app = createApp(App);
 app.use(PrimeVue);
 app.use(router);

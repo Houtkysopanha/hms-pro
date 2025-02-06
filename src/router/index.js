@@ -26,6 +26,10 @@ import PatientCaseStudie from '@/views/PatieCaseStudie/PatientCaseStudie.vue';
 import AddPatientCaseStudie from '@/views/PatieCaseStudie/AddPatientCaseStudie.vue';
 import InforPatientCaseStudie from '@/views/PatieCaseStudie/InforPatientCaseStudie.vue';
 import EditFeatures from '@/views/PatieCaseStudie/EditFeatures.vue';
+import PrescriptionPage from '@/views/Prescription/PrescriptionPage.vue';
+import AddPrescription from '@/views/Prescription/AddPrescription.vue';
+import InsuranceFeature from '@/views/Insurance/InsuranceFeature.vue';
+import AddInsurance from '@/views/Insurance/AddInsurance.vue';
 const routes = [
   {
     path: "/login",
@@ -171,6 +175,30 @@ const routes = [
         name: "EditFeatures",
         component: EditFeatures,
       },
+      //PrescriptionPage
+      {
+        path: "/prescription",
+        name: "PrescriptionPage",
+        component: PrescriptionPage, 
+      },
+      //AddPrescription
+      {
+        path: "/AddPrescription",
+        name: "AddPrescription",
+        component: AddPrescription,  // Add your component here
+      },
+      //InsucranceFeature
+      {
+        path: "/InsucranceFeature",
+        name: "InsucranceFeature",
+        component: InsuranceFeature,  // Add your component here
+      },
+      //AddInsurance
+      {
+        path: "/AddInsurance",
+        name: "AddInsurance",
+        component: AddInsurance,  // Add your component here
+      }
     ],
   },
   {

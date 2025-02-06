@@ -128,8 +128,8 @@
   { icon: "fa-solid fa-calendar-check", text: "Doctor Schedule", path: "/doctor-schedule" },
   { icon: "fa-solid fa-calendar-day", text: "Patient Appointment", path: "/patientappointment" },
   { icon: "fa-solid fa-file-medical-alt", text: "Patient Case Study", path: "/PatientCaseStudie" },
-  { icon: "fa-solid fa-prescription", text: "Prescription" },
-  { icon: "fa-solid fa-shield-alt", text: "Insurance" },
+  { icon: "fa-solid fa-prescription", text: "Prescription", path: "/prescription" },
+  { icon: "fa-solid fa-shield-alt", text: "Insurance", path: "/InsucranceFeature" },
   {
     icon: "fa-solid fa-flask",
     text: "Lab",
