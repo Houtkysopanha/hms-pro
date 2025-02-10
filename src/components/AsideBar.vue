@@ -75,15 +75,17 @@
                   :key="childIndex"
                   class="flex items-center space-x-2 p-2 rounded-md transition-all cursor-pointer"
                   :class="{
-                    'bg-blue-500 text-white': isActive(child.path), // Active child item highlight
+                    'bg-blue-200 text-white': isActive(child.path), // Active child item highlight
                     'hover:bg-gray-800': !isActive(child.path),    // Hover effect
                   }"
                 >
                   <router-link :to="child.path" class="flex items-center">
                     <i :class="child.icon" class="w-6 h-6 text-xl ml-3"></i>
                     <span
-                      class="whitespace-nowrap transition-all duration-300 ml-5"
-                      :class="{ hidden: !isSidebarExpanded, block: isSidebarExpanded }"
+                      class=" whitespace-nowrap transition-all duration-300 ml-5"
+                      :class="{ hidden: !isSidebarExpanded, block: isSidebarExpanded, 
+                        
+                      }"
                     >
                       {{ child.text }}
                     </span>
@@ -135,7 +137,7 @@
     text: "Lab",
     path: "",
     children: [
-      { icon: "fa-solid fa-vial", text: "Lab Report", path: "" },
+      { icon: "fa-solid fa-vial", text: "Lab Report", path: "/lap-report" },
       { icon: "fa-solid fa-file-medical", text: "Lab Report Template", path: "" }
     ]
   },

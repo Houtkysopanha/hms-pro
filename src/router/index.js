@@ -30,6 +30,9 @@ import PrescriptionPage from '@/views/Prescription/PrescriptionPage.vue';
 import AddPrescription from '@/views/Prescription/AddPrescription.vue';
 import InsuranceFeature from '@/views/Insurance/InsuranceFeature.vue';
 import AddInsurance from '@/views/Insurance/AddInsurance.vue';
+import LapReport from '@/views/Lab/LabReport/LapRaport.vue';
+import AddLabreport from '@/views/Lab/LabReport/AddLapreport.vue';
+import InforLab from '@/views/Lab/LabReport/InfoLab.vue'
 const routes = [
   {
     path: "/login",
@@ -198,6 +201,24 @@ const routes = [
         path: "/AddInsurance",
         name: "AddInsurance",
         component: AddInsurance,  // Add your component here
+      },
+      //LapReport
+      {
+        path: "/lap-report",
+        name: "LapReport",
+        component: LapReport,  // Add your component here
+      },
+      //AddLabReport
+      {
+        path: "/add-lab-report",
+        name: "AddLabReport",
+        component: AddLabreport,  // Add your component here
+      },
+      //InforLab
+      {
+        path: "/InforLab",
+        name: "InforLab",
+        component: InforLab,  // Add your component here
       }
     ],
   },
