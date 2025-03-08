@@ -1,128 +1,144 @@
 <template>
-    <aside :class="{ collapsed: isCollapsed }" class="aside-bar">
-      <div class="wrapper">
-        <!-- Sidebar -->
+  <aside :class="['aside-bar', { collapsed: isCollapsed, hidden: isMobileHidden, 'modal-popup': isMobile }]">
+    <div class="wrapper">
+      <div
+        class="asidebar flex flex-col text-white transition-all duration-300"
+        :class="{ 'w-60': isSidebarExpanded, 'w-16': !isSidebarExpanded }"
+      >
+        <div class="header-bar">
+          <div class="logo text-center">
+            <div class="logo-inner text-5xl mt-16 border-dashed border-b-2 border-light-blue-500">
+              <button @click="toggleCollapse" class="hamburger">
+                <p :class="{'text-3xl': isSidebarExpanded, 'transition-all duration-300': !isSidebarExpanded}" class="font-bold">HMS</p>
+              </button>
+            </div>
+          </div>
+        </div>
         <div
-          class="asidebar flex flex-col text-white transition-all duration-300"
-          :class="{ 'w-60': toggleCollapse, 'w-16': !toggleCollapse }"
+          class="status text-center mt-2 border-dashed border-b-2 border-light-blue-500"
+          :class="{ 'hidden': !isSidebarExpanded, 'block': isSidebarExpanded }"
         >
-          <!-- Hamburger Button -->
-          <div class="header-bar ">
-            <div class="logo text-center">
-              <div class="logo-inner text-4xl mt-16 border-dashed border-b-2 border-light-blue-500">
-                <button @click="toggleCollapse" class="hamburger">
-                  <p :class="{'text-3xl': toggleCollapse, 'transition-all duration-300': !toggleCollapse}" class="font-bold ">HMS</p>
-                </button>
-              </div>
-            </div>
+          <div class=" profile-picture profile text-center">
+            <img style="margin: auto" class="w-20 h-20 rounded-full border" src="../assets/profile1.png" alt="Profile">
           </div>
-          <div class="status text-center mt-2 border-dashed border-b-2 border-light-blue-500"
-            :class="{ 'hidden': !isSidebarExpanded, 'block': isSidebarExpanded }">
-            <div class="profile text-center">
-              <img style="margin: auto" class="w-20 h-20 rounded-full border" src="../assets//profile.jpg" alt="">
-            </div>
-            <div class="inofor mt-2 mb-3">
-              <p>Demo Test</p>
-              <i class="fa-solid fa-caret-up" style="color: lightgreen; font-size: 15px;"> <span class="font-sans"> Admin</span> </i>
-            </div>
+          <div class="info mt-2 mb-3">
+            <p>Demo Test</p>
+            <i class="fa-solid fa-caret-up" style="color: lightgreen; font-size: 15px;"> <span class="font-sans"> Admin</span> </i>
           </div>
-  
-          <!-- Sidebar Items -->
-          <div class="sidebar-list overflow-y-auto flex-1">
-            <ul class="flex-1 mt-5 space-y-3">
-              <li
-                v-for="(item, index) in menuItems"
-                :key="index"
-                class="group"
+        </div>
+
+        <div class="sidebar-list overflow-y-auto flex-1">
+          <ul class="flex-1 mt-5 space-y-3">
+            <li
+              v-for="(item, index) in menuItems"
+              :key="index"
+              class="group"
+            >
+              <!-- Main Item -->
+              <div
+                class="flex items-center space-x-2 p-2 rounded-md transition-all cursor-pointer"
+                :class="{
+                  'bg-ative text-white': isActive(item.path), // Active main item highlight
+                  'hover:bg-gray-800': !isActive(item.path),    // Hover effect
+                }"
+                @click="item.children ? toggleDropdown(index) : null"
               >
-                <!-- Main Item -->
-                <div
-                  class="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800 transition-all cursor-pointer"
-                  @click="toggleDropdown(index)"
-                >
-                  <router-link :to="item.path" class="flex items-center">
+                <template v-if="item.path">
+                  <router-link :to="item.path" class="flex items-center w-full">
                     <i :class="item.icon" class="w-6 h-6 text-xl ml-3"></i>
                     <span
-                      class="whitespace-nowrap transition-all duration-300 ml-10"
+                      class="whitespace-nowrap transition-all duration-300 ml-5"
                       :class="{ hidden: !isSidebarExpanded, block: isSidebarExpanded }"
                     >
                       {{ item.text }}
                     </span>
                   </router-link>
-                  <!-- Dropdown Indicator -->
-                  <i
-                    v-if="item.children"
-                    style="margin: 0;"
-                    class="fa-solid fa-chevron-down"
-                    :class="{ hidden: !isSidebarExpanded }"
-                  ></i>
-                </div>
-                <!-- Dropdown Items -->
-              <ul v-if="item.children && dropdownOpen === index" class="ml-10">
+                </template>
+                <template v-else>
+                  <div class="flex items-center w-full">
+                    <i :class="item.icon" class="w-6 h-6 text-xl ml-3"></i>
+                    <span
+                      class="whitespace-nowrap transition-all duration-300 ml-5"
+                      :class="{ hidden: !isSidebarExpanded, block: isSidebarExpanded }"
+                    >
+                      {{ item.text }}
+                    </span>
+                    <i v-if="item.children" class="fa-solid fa-chevron-down ml-auto"></i>
+                  </div>
+                </template>
+              </div>
+
+              <!-- Dropdown Items -->
+              <ul v-if="item.children && dropdownOpen === index" class="">
                 <li
                   v-for="(child, childIndex) in item.children"
                   :key="childIndex"
-                  class="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800 transition-all cursor-pointer"
+                  class="flex items-center space-x-2 p-2 rounded-md transition-all cursor-pointer"
+                  :class="{
+                    'bg-blue-200 text-white': isActive(child.path), // Active child item highlight
+                    'hover:bg-gray-800': !isActive(child.path),    // Hover effect
+                  }"
                 >
                   <router-link :to="child.path" class="flex items-center">
                     <i :class="child.icon" class="w-6 h-6 text-xl ml-3"></i>
                     <span
-                      class="whitespace-nowrap transition-all duration-300 ml-5"
-                      :class="{ hidden: !isSidebarExpanded, block: isSidebarExpanded }"
+                      class=" whitespace-nowrap transition-all duration-300 ml-5"
+                      :class="{ hidden: !isSidebarExpanded, block: isSidebarExpanded, 
+                        
+                      }"
                     >
                       {{ child.text }}
                     </span>
                   </router-link>
                 </li>
               </ul>
-              </li>
-            </ul>
-          </div>
-  
-          <!-- Footer -->
-          <div class="footer-bar">
-            <div class="flex items-center justify-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-6 h-6"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm0 12c-2.67 0-5.33-1.34-6.4-3.46.03-.68.68-1.24 1.39-1.24.6 0 1.1.37 1.31.91 1.16 2.08 4.06 2.09 5.22 0 .21-.54.71-.91 1.31-.91.71 0 1.36.56 1.39 1.24C17.33 16.66 14.67 18 12 18z"
-                ></path>
-              </svg>
-            </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-bar">
+          <div class="flex items-center justify-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm0 12c-2.67 0-5.33-1.34-6.4-3.46.03-.68.68-1.24 1.39-1.24.6 0 1.1.37 1.31.91 1.16 2.08 4.06 2.09 5.22 0 .21-.54.71-.91 1.31-.91.71 0 1.36.56 1.39 1.24C17.33 16.66 14.67 18 12 18z"
+              ></path>
+            </svg>
           </div>
         </div>
       </div>
-    </aside>
-  </template>
-  
+    </div>
+  </aside>
+</template>
+
   <script>
   export default {
-    props: ['isCollapsed'],
+    props: ['isCollapsed', 'isMobileHidden', 'isMobile'],
     data() {
     return {
       isSidebarExpanded: true, // Default expanded state
       dropdownOpen: null, // Track the open dropdown
       menuItems: [
   { icon: "fa-solid fa-tachometer-alt", text: "Dashboard", path: "/dashboard" },
-  { icon: "fa-solid fa-hospital", text: "Hospital Department", path: "/hospittal-department" },
-  { icon: "fa-solid fa-user-md", text: "Doctor" },
-  { icon: "fa-solid fa-user-injured", text: "Patient" },
-  { icon: "fa-solid fa-calendar-check", text: "Doctor Schedule" },
-  { icon: "fa-solid fa-calendar-day", text: "Patient Appointment" },
-  { icon: "fa-solid fa-file-medical-alt", text: "Patient Case Study" },
-  { icon: "fa-solid fa-prescription", text: "Prescription" },
-  { icon: "fa-solid fa-shield-alt", text: "Insurance" },
+  { icon: "fa-solid fa-hospital", text: "Hospital Department", path: "/hospital-department" },
+  { icon: "fa-solid fa-user-md", text: "Doctor", path: "/doctor"},
+  { icon: "fa-solid fa-user-injured", text: "Patient", path: "/patient-feature" },
+  { icon: "fa-solid fa-calendar-check", text: "Doctor Schedule", path: "/doctor-schedule" },
+  { icon: "fa-solid fa-calendar-day", text: "Patient Appointment", path: "/patientappointment" },
+  { icon: "fa-solid fa-file-medical-alt", text: "Patient Case Study", path: "/PatientCaseStudie" },
+  { icon: "fa-solid fa-prescription", text: "Prescription", path: "/prescription" },
+  { icon: "fa-solid fa-shield-alt", text: "Insurance", path: "/InsucranceFeature" },
   {
     icon: "fa-solid fa-flask",
     text: "Lab",
     path: "",
     children: [
-      { icon: "fa-solid fa-vial", text: "Lab Report", path: "" },
-      { icon: "fa-solid fa-file-medical", text: "Lab Report Template", path: "" }
+      { icon: "fa-solid fa-vial", text: "Lab Report", path: "/lap-report" },
+      { icon: "fa-solid fa-file-medical", text: "Lab Report Template", path: "/lap-report-tem" }
     ]
   },
   {
@@ -175,19 +191,31 @@
     }
   },
   methods: {
-      toggleCollapse() {
-        this.$emit('toggle');
-        this.isSidebarExpanded = !this.isSidebarExpanded;
-      },
-      
+    toggleCollapse() {
+      this.$emit('toggle');
+      this.isSidebarExpanded = !this.isSidebarExpanded;
+    },
     toggleDropdown(index) {
-      this.dropdownOpen = this.dropdownOpen === index ? null : index; // Toggle dropdown
+      this.dropdownOpen = this.dropdownOpen === index ? null : index;
     },
+    isActive(path) {
+      if (!path) return false;
+      return this.$route.path === path;
     },
+  },
   };
   </script>
   
   <style scoped>
+  .bg-blend-lighten{
+    background-color: lightblue;
+  }
+  .profile-picture img {
+    border: 3px solid #e2e8f0;
+  }
+  .bg-ative{
+    background-color: lightblue;
+  }
   .aside-bar {
     position: fixed;
     top: 60px;
@@ -245,7 +273,7 @@
 .asidebar {
   width: auto;
   height: 100vh;
-  background-color: #334155;
+  /* background-color: #0044FF0F; */
 }
 
 /* Styling for expanded/collapsed sidebar */
@@ -348,6 +376,33 @@ li {
   color: white;
   font-size: 24px;
   cursor: pointer;
+}
+.modal-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .aside-bar {
+    width: 100%;
+    height: auto;
+    position: fixed;
+    transform: translateX(-100%);
+  }
+  .aside-bar.collapsed {
+    width: 100%;
+  }
+  .aside-bar.hidden {
+    transform: translateX(-100%);
+  }
 }
   </style>
   
