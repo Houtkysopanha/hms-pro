@@ -138,7 +138,7 @@
     path: "",
     children: [
       { icon: "fa-solid fa-vial", text: "Lab Report", path: "/lap-report" },
-      { icon: "fa-solid fa-file-medical", text: "Lab Report Template", path: "" }
+      { icon: "fa-solid fa-file-medical", text: "Lab Report Template", path: "/lap-report-tem" }
     ]
   },
   {

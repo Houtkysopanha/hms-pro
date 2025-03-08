@@ -33,6 +33,8 @@ import AddInsurance from '@/views/Insurance/AddInsurance.vue';
 import LapReport from '@/views/Lab/LabReport/LapRaport.vue';
 import AddLabreport from '@/views/Lab/LabReport/AddLapreport.vue';
 import InforLab from '@/views/Lab/LabReport/InfoLab.vue'
+import LabReportTem from '@/views/Lab/LabReporttem/LabReportTem.vue';
+import AddReTem from '@/views/Lab/LabReporttem/AddReTem.vue';
 const routes = [
   {
     path: "/login",
@@ -219,6 +221,18 @@ const routes = [
         path: "/InforLab",
         name: "InforLab",
         component: InforLab,  // Add your component here
+      },
+      //LapReportTem
+      {
+        path: "/lap-report-tem",
+        name: "LapReportTem",
+        component: LabReportTem,  // Add your component here
+      },
+      //AddReTem
+      {
+        path: "/add-re-tem",
+        name: "AddReTem",
+        component: AddReTem,  // Add your component here
       }
     ],
   },
